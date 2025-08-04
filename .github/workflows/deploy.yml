@@ -49,7 +49,7 @@ jobs:
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
-          docker pull your-dockerhub-username/node-cicd-app
+          docker pull ${{ secrets.DOCKER_USERNAME }}/node-cicd-app:latest
           docker stop app || true
           docker rm app || true
           docker run -d --name app -p 80:3000 your-dockerhub-username/node-cicd-app
